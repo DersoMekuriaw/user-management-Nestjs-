@@ -14,7 +14,15 @@ export class UserEntity {
 
   @ApiProperty({ description: 'Full name of the user', example: '' })
   @Column()
-  name: string;
+  fullName: string;
+
+  @ApiProperty({ description: 'Username of the user', example: '' })
+  @Column()
+  username: string;
+
+  @ApiProperty({ description: 'Password of the user', example: '' })
+  @Column()
+  password: string;  // Should be hashed before storage
 
   @ApiProperty({ description: 'Email address of the user', example: '' })
   @Column({ unique: true })
@@ -25,6 +33,6 @@ export class UserEntity {
   role: string;
 
   // 👇 One user can have many posts
-  @OneToMany(() => PostEntity, (post) => post.user)
+  @OneToMany(() => PostEntity, (post) => post.author)
   posts: PostEntity[];
 }

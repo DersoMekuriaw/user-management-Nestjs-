@@ -15,5 +15,5 @@ export class PostEntity {
 
   // Many posts belong to one user
   @ManyToOne(() => UserEntity, (user) => user.posts, { onDelete: 'CASCADE' })
-  user: UserEntity;
+  author: UserEntity;
 }

@@ -30,11 +30,11 @@ export class PostsService {
   }
 
   async create(createPostDto: CreatePostDto): Promise<PostEntity> {
-    const user = await this.userRepository.findOne({ where: { id: createPostDto.userId } });
-    if (!user) throw new NotFoundException('User not found');
+    const author = await this.userRepository.findOne({ where: { id: createPostDto.userId } });
+    if (!author) throw new NotFoundException('Author not found');
     const newPost = this.postRepository.create({
       ...createPostDto,
-      user,
+      author,
     });
     return this.postRepository.save(newPost);
   }
