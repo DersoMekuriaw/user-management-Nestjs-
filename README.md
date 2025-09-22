@@ -27,7 +27,8 @@
 
 ## Authentication
 Use this command: 
-```npm i  passport passport-jwt @nestjs/passport @nestjs/jwt bcrypt
+```
+npm i  passport passport-jwt @nestjs/passport @nestjs/jwt bcrypt
 npm i -D @types/passport-jwt @types/bcrypt
 ```
 ## Project setup
