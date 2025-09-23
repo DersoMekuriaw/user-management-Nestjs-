@@ -20,12 +20,12 @@ export class CreateUserDto {
   @IsEmail()
   email: string;
 
-  @ApiProperty({ 
-    description: 'Role of the user', 
+  @ApiProperty({
+    description: 'Role of the user',
     enum: Role,
-    example: 'user'
+    example: 'user',
   })
-  @IsEnum(['admin', 'user', 'viewer'], {
+  @IsEnum(Role, {
     message: 'Valid role values are admin, user, viewer',
   })
   role: 'admin' | 'user' | 'viewer';

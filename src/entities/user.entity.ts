@@ -4,6 +4,8 @@ import { Role } from 'src/shared/enums/role.enum';
 
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
+import { Exclude } from 'class-transformer';
+
 import { PostEntity } from './post.entity';
 
 @Entity('users')
@@ -21,7 +23,8 @@ export class UserEntity {
   username: string;
 
   @ApiProperty({ description: 'Password of the user', example: '' })
-  @Column()
+  @Column() // Make sure this column decorator is present
+  @Exclude() // This will exclude password from serialization
   password: string;  // Should be hashed before storage
 
   @ApiProperty({ description: 'Email address of the user', example: '' })

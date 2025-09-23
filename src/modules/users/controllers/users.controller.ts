@@ -8,14 +8,18 @@ import {
   Delete,
   Query,
   ValidationPipe,
+  UseGuards,
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+
+import { JwtAuthGuard } from 'src/modules/auth/auth.guard';
 
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UsersService } from '../services/users.service';
 import { UserEntity } from '../../../entities/user.entity';
 
+@UseGuards(JwtAuthGuard)
 @ApiTags('users') // Groups endpoints in Swagger
 @Controller('users')
 export class UsersController {

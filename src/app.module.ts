@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
+import { AuthModule } from './modules/auth/auth.module';
 import { PostsModule } from './modules/posts/posts.module';
 import { UsersModule } from './modules/users/users.module';
 
@@ -20,9 +21,11 @@ import { UsersModule } from './modules/users/users.module';
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
       synchronize: true,
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     UsersModule,
-    PostsModule
+    PostsModule,
+    AuthModule, 
     ],
   controllers: [AppController],
   providers: [AppService],
